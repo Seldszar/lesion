@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "extends": "airbnb-base",
+  "rules": {
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": "off"
+  }
+}
