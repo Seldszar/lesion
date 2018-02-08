@@ -2,9 +2,16 @@
 
 > An instrument of unrelenting harm.
 
-Another file-based store client.
+Lesion allows building custom file-based store clients by using resolvers.
 
-## Install
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Author](#author)
+- [License](#license)
+
+## Installation
 
 ```bash
 npm install lesion --save
@@ -13,34 +20,40 @@ npm install lesion --save
 ## Usage
 
 ```javascript
-const fs = require('fs');
 const lesion = require('lesion');
 
-// The options passed to the store client
-const options = {
-  resolvers: [
-    {
-      test: file => /\.txt$/i.test(file),
-      visit: file => fs.readFileSync(file, 'utf8'),
-    },
-  ],
-};
+const rootPath = '/path/to/store';
+const resolvers = [
+  {
+    extensions: ['json', 'json5'],
+    deserialize: contents => JSON.parse(contents.toString('utf8')),
+  },
+  {
+    extensions: ['log', 'txt'],
+    deserialize: contents => contents.toString('utf8'),
+  },
+  {
+    extensions: ['gif', 'jpeg', 'jpg', 'png'],
+    deserialize: contents => contents,
+  },
+];
 
-// Create a new store client
-lesion('path/to/store', options).then((store) => {
-  // Fetch the store value
-  store.fetch().then((value) => {
-    console.log(value);
+lesion(rootPath, { resolvers })
+  .then((store) => {
+    // Fetch the store value
+    console.log(store.value);
+
+    // Attach a callback called after each store change
+    const disposer = store.onChange(({ newFragment, oldFragment }) => {
+      console.log({ newFragment, oldFragment });
+    });
   });
-
-  // Function called after each change
-  const onChange = (value) => {
-    console.log(value);
-  };
-
-  // Watch for store changes
-  store.watch(onChange, (watcher) => {
-    watcher.dispose();
-  });
-});
 ```
+
+## Author
+
+Alexandre Breteau - [@0xSeldszar](https://twitter.com/0xSeldszar)
+
+## License
+
+MIT © [Alexandre Breteau](https://seldszar.fr)
