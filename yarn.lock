@@ -2702,6 +2702,10 @@ lodash.isundefined@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/lodash.isundefined/-/lodash.isundefined-3.0.1.tgz#23ef3d9535565203a66cefd5b830f848911afb48"
 
+lodash.some@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -3042,6 +3046,13 @@ nsfw@^1.0.16:
     lodash.isundefined "^3.0.1"
     nan "^2.0.0"
     promisify-node "^0.3.0"
+
+nukor@seldszar/nukor:
+  version "0.1.0"
+  resolved "https://codeload.github.com/seldszar/nukor/tar.gz/42ef2828e302e7a7bd98642df5de906bd802a249"
+  dependencies:
+    lodash.some "^4.6.0"
+    nsfw "^1.0.16"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
