@@ -1,5 +1,7 @@
 # Lesion
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Seldszar/lesion.svg)](https://greenkeeper.io/)
+
 > An instrument of unrelenting harm.
 
 Lesion allows building custom file-based store clients by using resolvers.
